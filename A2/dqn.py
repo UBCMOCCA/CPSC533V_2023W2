@@ -62,9 +62,10 @@ def train_reinforcement_learning(render=False):
             if render:
                 env.render()
 
-            if terminated or truncated and i_episode % PRINT_INTERVAL == 0:
-                print('[Episode {:4d}/{}] [Steps {:4d}] [reward {:.1f}]'
-                    .format(i_episode, NUM_EPISODES, t, episode_total_reward))
+            if (terminated or truncated):
+                if i_episode % PRINT_INTERVAL == 0:
+                    print('[Episode {:4d}/{}] [Steps {:4d}] [reward {:.1f}]'
+                        .format(i_episode, NUM_EPISODES, t, episode_total_reward))
                 break
 
         if i_episode % TARGET_UPDATE == 0:
